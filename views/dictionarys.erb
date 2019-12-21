@@ -1,0 +1,28 @@
+<h1>Learn your words!</h1>
+
+<% if @dictionarys.any? %>
+<ul>
+  <% @dictionarys.each do |dictionary| %>
+    <li><a href="/dictionarys/<%= dictionary.id %>"><%= dictionary.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are currently no words to display.</p>
+<% end %>
+
+<a href="/dictionarys/new">Add a new dictionary</a>
+
+<form action="/dictionarys" method="post">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<form action="/dictionarys/<%= @dictionary.id() %>" method="post">
+
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete dictionary</button>
+</form>
