@@ -1,20 +1,20 @@
-<h4>Dictionary Name: <%= @dictionary.name %></h4>
+<h4>word Name: <%= @word.name %></h4>
 
-<h3>Dictionary Words</h3>
+<h3>word Words</h3>
 
-<% if @dictionary.words %>
+<% if @word.words %>
 <ul>
-  <% @dictionary.words.each do |word| %>
-  <li><a href="/dictionarys/<%= @dictionary.id %>/words/<%= word.id %>"><%= word.name %></a></li>
+  <% @word.words.each do |word| %>
+  <li><a href="/words/<%= @word.id %>/words/<%= word.id %>"><%= word.name %></a></li>
   <% end %>
 </ul>
 <% else %>
-<p>There are no words listed for this dictionary yet.</p>
+<p>There are no words listed for this word yet.</p>
 <% end %>
 
 <h4>Add a word:</h4>
 
-<form action="/dictionarys/<%= @dictionary.id %>/words" method="post">
+<form action="/words/<%= @word.id %>/words" method="post">
   <div class="form-group">
     <label for="word_name">Word name</label>
     <input id="word_name" name="word_name" class="form-control" type="text">
@@ -23,5 +23,5 @@
 </form>
 
 
-<p><a href="/dictionarys/<%= @dictionary.id %>/edit">Edit dictionary</a></p>
-<a href="/dictionarys">Return to dictionary list</a>
+<p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
+<a href="/words">Return to word list</a>
