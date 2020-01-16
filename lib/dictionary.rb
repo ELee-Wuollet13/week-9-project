@@ -10,7 +10,7 @@ class Dictionary
   end
 
   def words
-    Word.find_by_dictionary(self.id)
+    Word.(self.id)
   end
 
   def self.all
@@ -26,7 +26,7 @@ class Dictionary
   end
 
   def self.clear
-    @@dictionarys = {}
+
     @@total_rows = 0
   end
 
