@@ -1,16 +1,17 @@
 class Dictionary
-  attr_reader :id, :name
+  attr_reader :id
+  attr_accessor :name
 
   @@dictionarys = {}
   @@total_rows = 0
 
-  def initialize(name, id)
-    @name = name
-    @id = id || @@total_rows += 1
+  def initialize(attributes)
+    @name = attributes.fetch(:name)
+    @id = attributes.fetch(:id) || @@total_rows += 1
   end
 
-  def words
-    Word.(self.id)
+  def word
+    Word.(self.word_id)
   end
 
   def self.all
@@ -26,7 +27,7 @@ class Dictionary
   end
 
   def self.clear
-
+    @@words ={}
     @@total_rows = 0
   end
 
@@ -35,7 +36,8 @@ class Dictionary
   end
 
   def update(name)
-      @name = name
+      self.name = name
+      @@dictionary[self.id] = Word.new({ :name => slef.name, :id => self.id})
   end
 
   def delete

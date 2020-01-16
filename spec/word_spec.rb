@@ -8,14 +8,14 @@ describe '#Word' do
   before(:each) do
     Dictionary.clear()
     Word.clear()
-    @dictionary = Dictionary.new("Grass overflow", nil)
-    @dictionary.save()
+    # @dictionary = Dictionary.new("Grass overflow", nil)
+    # @dictionary.save()
   end
 
   describe('#==') do
     it("is the same word if it has the same attributes as another word") do
-      word = Word.new("Solid", @dictionary.id, nil)
-      word2 = Word.new("Solid", @dictionary.id, nil)
+      word = Word.new({:name => "Solid", :dictionary_id => @dictionary.id, :id => nil})
+      word2 = Word.new({:name => "Solid", :dictionary_id => @dictionary.id, :id => nil})
       expect(word).to(eq(word2))
     end
   end
