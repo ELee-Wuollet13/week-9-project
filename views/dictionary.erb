@@ -1,11 +1,11 @@
-<h4>word Name: <%= @word.name %></h4>
+<h4>word Name: <%= @word.text %></h4>
 
 <h3>word Words</h3>
 
 <% if @word.words %>
 <ul>
   <% @word.words.each do |word| %>
-  <li><a href="/words/<%= @word.id %>/words/<%= word.id %>"><%= word.name %></a></li>
+  <li><a href="/words/<%= @word.id %>/words/<%= word.id %>"><%= word.text %></a></li>
   <% end %>
 </ul>
 <% else %>
@@ -16,8 +16,8 @@
 
 <form action="/words/<%= @word.id %>/words" method="post">
   <div class="form-group">
-    <label for="word_name">Word name</label>
-    <input id="word_name" name="word_name" class="form-control" type="text">
+    <label for="word_text">Word text</label>
+    <input id="word_text" text="word_text" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add word</button>
 </form>

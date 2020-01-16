@@ -55,15 +55,6 @@ describe '#Word' do
     end
   end
 
-  describe('#update') do
-    it("updates an word by id") do
-      word = Word.new({:text => "A Love Supreme", :id => nil})
-      word.save()
-      word.update("A Love Supreme")
-      expect(word.text).to(eq("A Love Supreme"))
-    end
-  end
-
   describe('#delete') do
     it("deletes an word by id") do
       word = Word.new({:text => "A Love Supreme", :id => nil})
@@ -110,6 +101,7 @@ describe '#Word' do
       expect(Word.sort()).to(eq([word2, word, word3]))
     end
   end
+  
   describe('#sold') do
     it("sorts words by text") do
       word = Word.new({:text => "Blue", :id => nil})
@@ -122,7 +114,4 @@ describe '#Word' do
       expect(Word.all_sold).to(eq([word]))
     end
   end
-
-
-
 end

@@ -40,17 +40,17 @@ class Word
   end
 
   def self.sort()
-  sorted_array = []
+    sorted_array = []
 
-  self.all.each do |a|
-    sorted_array.push(a.name)
+    self.all.each do |a|
+      sorted_array.push(a.text)
+    end
+    results = sorted_array.sort.map { |a|  self.search(a)[0] }
   end
-  results = sorted_array.sort.map { |a|  self.search(a)[0] }
-end
 
   def update(text)
-      self.text = text
-      @@word[self.id] = Word.new({ :text => self.text, :id => self.id})
+    self.text = text
+    @@word[self.id] = Word.new({ :text => self.text, :id => self.id})
   end
 
   def delete
