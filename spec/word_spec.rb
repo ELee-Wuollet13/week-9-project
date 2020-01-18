@@ -67,7 +67,7 @@ describe '#Word' do
   end
 
   describe('#definitions') do
-    it("returns an word's definitions") do
+    it("returns a word's definitions") do
       word = Word.new({:text => "A Love Supreme", :id => nil})
       word.save()
       definition = Definition.new({:text => "Naima", :word_id => word.id, :id => nil})
@@ -99,19 +99,6 @@ describe '#Word' do
       word3 = Word.new({:text => "Moving Pictures", :id => nil})
       word3.save()
       expect(Word.sort()).to(eq([word2, word, word3]))
-    end
-  end
-  
-  describe('#sold') do
-    it("sorts words by text") do
-      word = Word.new({:text => "Blue", :id => nil})
-      word.save()
-      word2 = Word.new({:text => "A Love Supreme", :id => nil})
-      word2.save()
-      word3 = Word.new({:text => "Moving Pictures", :id => nil})
-      word3.save()
-      word.sold()
-      expect(Word.all_sold).to(eq([word]))
     end
   end
 end
