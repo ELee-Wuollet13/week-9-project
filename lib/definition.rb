@@ -5,10 +5,10 @@ class Definition
   @@definitions = {}
   @@total_rows = 0
 
-  def initialize(attributes)
-    @text = attributes.fetch(:text)
-    @definition_id = attributes.fetch(:definition_id)
-    @id = attributes.fetch.(:id) || @@total_rows += 1
+  def initialize(id, text, word_id)
+    @text = text
+    @word_id = word_id
+    @id = id || @@total_defs += 1
   end
 
   def ==(definition_to_compare)
@@ -43,10 +43,10 @@ class Definition
   end
 end
 
-def self.find_by_word(alb_id)
+def self.find_by_word(find_id)
   definitions = []
   @@definitions.values.each do |definition|
-    if definition.word_id == alb_id
+    if definition.word_id == find_id
       definitions.push(definition)
     end
   end

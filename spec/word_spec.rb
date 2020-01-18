@@ -65,7 +65,7 @@ describe '#Word' do
       expect(Word.all).to(eq([word2]))
     end
   end
-
+#still working on this one
   describe('#definitions') do
     it("returns a word's definitions") do
       word = Word.new({:text => "A Love Supreme", :id => nil})

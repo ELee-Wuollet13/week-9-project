@@ -1,27 +1,13 @@
-<h4>word Name: <%= @word.name %></h4>
+<h1>Our Dictionary</h1>
 
-<h3>word Words</h3>
-
-<% if @word.words %>
+<% if @words.any? %>
 <ul>
-  <% @word.words.each do |word| %>
-  <li><a href="/words/<%= @word.id %>/words/<%= word.id %>"><%= word.name %></a></li>
-  <% end %>
+	<% @words.each do |word| %>
+	<li><a href="/dictionary/<%= word.id %>"</a><%= word.name %></li>
+	<% end %>
 </ul>
 <% else %>
-<p>There are no words listed for this word yet.</p>
+<p>Our words are currently undifined</p>
 <% end %>
 
-<h4>Add a word:</h4>
-
-<form action="/words/<%= @word.id %>/words" method="post">
-  <div class="form-group">
-    <label for="word_name">Word name</label>
-    <input id="word_name" name="word_name" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Add word</button>
-</form>
-
-
-<p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
-<a href="/words">Return to word list</a>
+<a href="/new_word/">Add a Word</a>
