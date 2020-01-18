@@ -3,6 +3,7 @@ require('sinatra/reloader')
 require('./lib/word')
 require('./lib/definition')
 require('pry')
+require ('rspec')
 also_reload('lib/**/*.rb')
 
 get('/') do
