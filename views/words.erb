@@ -1,13 +1,26 @@
-<h1>Our Dictionary</h1>
 
+
+<h3>Word definer</h3>
+
+<p>Enter a word and then add your own fun definition by clicking the word and typing the definition you wish to add</p>
+<br>
+<p>Your current words are:</p>
 <% if @words.any? %>
-<ul>
-	<% @words.each do |word| %>
-	<li><a href="/words/<%= word.id %>"</a><%= word.text %></li>
-	<% end %>
-</ul>
+  <ul>
+    <% @words.each do |word| %>
+  <li><a href="/words/<%= word.id %>"><%= word.name %></a></li>
+  <% end %>
+  </ul>
 <% else %>
-<p>Our words are currently undifined</p>
+  <p>There are currently no records to display.</p>
 <% end %>
 
-<a href="/words/new">Add a Word</a>
+<a href="/words/new">Add a new word</a>
+
+<form action="/words">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>

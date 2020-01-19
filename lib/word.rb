@@ -1,17 +1,16 @@
 class Word
-  attr_reader :id, :text
-  attr_accessor :text, :id
-
+  attr_reader :id, :name
+  attr_accessor :name
   @@words = {}
   @@total_rows = 0
 
-  def initialize(attributes)
-    @text = attributes.fetch(:text)
-    @id = attributes.fetch(:id) || @@total_rows += 1
+  def initialize(name, id)
+    @name = name
+    @id = id || @@total_rows += 1
   end
 
-  def definition
-    Definition.(self.definition_id)
+  def definitions
+    Definition.find_by_word(self.id)
   end
 
   def self.all
@@ -19,41 +18,28 @@ class Word
   end
 
   def save
-    @@words[self.id] = Word.new({ :text => self.text, :id => self.id })
+    @@words[self.id] = Word.new(self.name, self.id)
   end
 
   def ==(word_to_compare)
-    self.text() == word_to_compare.text()
+    self.name() == word_to_compare.name()
   end
 
   def self.clear
-    @@words ={}
+    @@words = {}
     @@total_rows = 0
-  end
-
-  def self.search(search)
-    @@words.values().select { |a| a.text.match(/#{search}/i)}
   end
 
   def self.find(id)
     @@words[id]
   end
 
-  def self.sort()
-    sorted_array = []
-
-    self.all.each do |a|
-      sorted_array.push(a.text)
-    end
-    results = sorted_array.sort.map { |a|  self.search(a)[0] }
-  end
-
-  def update(text)
-    self.text = text
-    @@word[self.id] = Word.new(self.text, self.id)
+  def update(name)
+      @name = name
   end
 
   def delete
     @@words.delete(self.id)
   end
+
 end

@@ -1,9 +1,21 @@
-<h1>Add a new Definition</h1>
 
-<form action="/words/:id/definitions" method="post">
-  <div class="form-group">
-    <label for="definitions_text">Definition</label>
-    <input id="n" text="definitions_text" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Go!</button>
+<br>
+<h5>Word: <%= @definition.word.name %></h5>
+<p>Definition: <%= @definition.name %></p>
+
+<form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="name">Rename definition</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update definition</button>
 </form>
+
+<form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete definition</button>
+</form>
+
+<a href="/words/<%= @definition.word.id %>">Back to <%= @definition.word.text %></a>
