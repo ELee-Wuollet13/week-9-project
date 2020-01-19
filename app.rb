@@ -7,7 +7,7 @@ require ('rspec')
 also_reload('lib/**/*.rb')
 
 get('/') do
-  redirect to('/words')
+  redirect to('/words_main')
 end
 
 get('/words_main') do
@@ -15,18 +15,17 @@ get('/words_main') do
   erb(:words_main)
 end
 
-get('/words/search') do
-  user_search = params[:search]
-  @search = Word.search(user_search)
-  erb(:search)
-end
-
+# get('/words/search') do
+#   user_search = params[:search]
+#   @search = Word.search(user_search)
+#   erb(:search)
+# end
 
 get ('/words/new') do
   erb(:new_word)
 end
 
-post ('/words') do
+post ('/words_main') do
   text = params[:word_text]
   word = Word.new({:text => text, :id => nil})
   word.save()

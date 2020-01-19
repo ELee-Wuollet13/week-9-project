@@ -1,5 +1,5 @@
 class Word
-
+  attr_reader :id, :text
   attr_accessor :text, :id
 
   @@words = {}
@@ -50,7 +50,7 @@ class Word
 
   def update(text)
     self.text = text
-    @@word[self.id] = Word.new({ :text => self.text, :id => self.id})
+    @@word[self.id] = Word.new(self.text, self.id)
   end
 
   def delete
