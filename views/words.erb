@@ -3,11 +3,11 @@
 <% if @words.any? %>
 <ul>
 	<% @words.each do |word| %>
-	<li><a href="/dictionary/<%= word.id %>"</a><%= word.name %></li>
+	<li><a href="/words/<%= word.id %>"</a><%= word.text %></li>
 	<% end %>
 </ul>
 <% else %>
 <p>Our words are currently undifined</p>
 <% end %>
 
-<a href="/new_word/">Add a Word</a>
+<a href="/words/new">Add a Word</a>

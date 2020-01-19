@@ -49,16 +49,10 @@ patch ('/words/:id') do
   redirect to('/words')
 end
 
-get ('/words/:id/buy') do
-
-    @word = Word.find(params[:id].to_i())
-    @word.sold
-    redirect to('/words')
-end
 delete ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.delete()
-  redirect to('/words')
+  erb(:words)
 end
 
 get ('/words/:id/definitions/:definition_id') do
@@ -84,5 +78,5 @@ delete ('/words/:id/definitions/:definition_id') do
   definition = Definition.find(params[:definition_id].to_i())
   definition.delete
   @word = Word.find(params[:id].to_i())
-  erb(:word)
+  erb(:words)
 end
