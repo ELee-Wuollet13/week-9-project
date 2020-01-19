@@ -10,9 +10,9 @@ get('/') do
   redirect to('/words')
 end
 
-get('/words') do
+get('/words_main') do
   @words = Word.sort
-  erb(:words)
+  erb(:words_main)
 end
 
 get('/words/search') do
@@ -30,7 +30,7 @@ post ('/words') do
   text = params[:word_text]
   word = Word.new({:text => text, :id => nil})
   word.save()
-  redirect to('/words')
+  redirect to('/words_main')
 end
 
 get ('/words/:id') do
@@ -46,16 +46,16 @@ end
 patch ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.update(params[:text])
-  redirect to('/words')
+  redirect to('/words_main')
 end
 
 delete ('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.delete()
-  erb(:words)
+redirect to('/words_main')
 end
 
-get ('/words/:id/definitions/:definition_id') do
+get ('/words/:id/definitions') do
   @definition = Definition.find(params[:definition_id].to_i())
   erb(:definition)
 end
@@ -64,7 +64,7 @@ post ('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.new({:text => params[:definition], :word_id => @word.id, :id => nil, :poster_text => params[:poster_text]})
   definition.save()
-  erb(:word)
+  erb(:definition)
 end
 
 patch ('/words/:id/definitions/:definition_id') do
@@ -78,5 +78,5 @@ delete ('/words/:id/definitions/:definition_id') do
   definition = Definition.find(params[:definition_id].to_i())
   definition.delete
   @word = Word.find(params[:id].to_i())
-  erb(:words)
+  erb(:words_main)
 end
