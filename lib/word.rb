@@ -35,7 +35,7 @@ class Word
   end
 
   def update(name)
-      @name = name
+    @name = name
   end
 
   def delete
