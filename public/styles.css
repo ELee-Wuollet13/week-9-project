@@ -1,0 +1,20 @@
+button {
+color: black;
+object-position: center;
+
+
+}
+
+body{
+  background-color: aquamarine;
+  text-align: center;
+  background-position: bottom;
+
+
+}
+
+.titles{
+  font-family: 'Freckle Face', cursive;
+  font-size: 80px;
+  text-align: center;
+}
